@@ -1,19 +1,21 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { reactive } from 'vue'
 
 export const useFormStore = defineStore('form', () => {
-  const breed = ref('')
-  const name = ref('')
-  const nameTwo = ref('')
+  const form = reactive({
+    breed: '',
+    name: '',
+    nameTwo: '',
+    sex: '',
+    sterilized: ''
+  })
 
   const handleSelectBreed = (value: string) => {
-    breed.value = value
+    form.breed = value
   }
 
   return {
-    breed,
-    name,
-    nameTwo,
+    form,
     handleSelectBreed
   }
 })

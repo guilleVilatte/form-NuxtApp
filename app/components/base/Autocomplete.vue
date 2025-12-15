@@ -11,6 +11,7 @@ interface ListElement {
 
 interface Props {
   list: ListElement[]
+  selected?: string
 }
 
 const emit = defineEmits<AutocompleteEmits>()
@@ -21,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const autocompleteRef = ref<HTMLElement | null>(null)
 const elements = computed((): ListElement[] => props.list)
-const searchTerm = ref<string>('')
+const searchTerm = ref<string>(props.selected ? props.selected : '')
 const isListVisible = ref<boolean>(false)
 
 watch(searchTerm, (newVal) => {
