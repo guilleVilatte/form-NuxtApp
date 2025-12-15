@@ -12,6 +12,7 @@ interface ListElement {
 interface Props {
   list: ListElement[]
   selected?: string
+  placeholder?: string
 }
 
 const emit = defineEmits<AutocompleteEmits>()
@@ -76,8 +77,8 @@ onUnmounted(() => {
         type="text"
         id="search"
         v-model="searchTerm"
-        placeholder="Qué raza es tu peludo?"
-        class="bg-gray-100 py-3 px-6 mb-1 w-full border border-gray-300 rounded-3xl focus:outline-2 focus:outline-orange-400"
+        :placeholder="placeholder"
+        class="py-3 px-6 mb-1 w-full border border-gray-300 hover:border-gray-400 rounded-3xl focus:outline-2 focus:outline-orange-400"
         @focus="isListVisible = true"
       />
 

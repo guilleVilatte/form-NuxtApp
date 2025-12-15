@@ -12,14 +12,6 @@ const emit = defineEmits<changeStepEmits>()
 
 const form = useFormStore()
 const icon = h('img', { class: 'w-4 h-4 mx-1', src: emojiDoc })
-
-const handleSex = (sel: string) => {
-  form.form.sex = sel
-}
-
-const handleSterilizedOptions = (sel: string) => {
-  form.form.sterilized = sel
-}
 </script>
 
 <template>
@@ -27,19 +19,23 @@ const handleSterilizedOptions = (sel: string) => {
     <div class="h-24 w-24 rounded-full bg-sky-100 flex justify-center items-center">
       <img class="h-12 w-12" src="@/resources/images/emojiLupa.png" alt="" />
     </div>
-    <h1 class="font-normal text-3xl text-gray-700">¡Queremos conocer a {{ form.form.name }}!</h1>
-    <SegmentControlButtons
-      :list="['Macho', 'Hembra']"
-      :selected-prop="form.form.sex"
-      @select="handleSex"
-    />
-    <h1 class="font-normal text-3xl text-gray-700">¿Está esterilizado/a?</h1>
-    <SegmentControlButtons
-      :list="['Si', 'No']"
-      :selected-prop="form.form.sterilized"
-      @select="handleSterilizedOptions"
-    />
-    <div class="h-[50px]">
+    <div class="flex flex-col gap-6">
+      <h1 class="font-normal text-3xl text-gray-700">¡Queremos conocer a {{ form.form.name }}!</h1>
+      <SegmentControlButtons
+        :list="['Macho', 'Hembra']"
+        :selected-prop="form.form.sex"
+        @select="form.handleSex"
+      />
+    </div>
+    <div class="flex flex-col gap-6">
+      <h1 class="font-normal text-3xl text-gray-700">¿Está esterilizado/a?</h1>
+      <SegmentControlButtons
+        :list="['Si', 'No']"
+        :selected-prop="form.form.sterilized"
+        @select="form.handleSterilizedOptions"
+      />
+    </div>
+    <div class="h-[50px] mt-6">
       <ButtonComponent
         text="Continuar"
         :disabled="!form.form.sterilized || !form.form.sex"
