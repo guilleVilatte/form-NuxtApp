@@ -8,6 +8,7 @@ type changeStepEmits = {
 const emit = defineEmits<changeStepEmits>()
 
 const form = useFormStore()
+form.form.activity = '2'
 </script>
 
 <template>

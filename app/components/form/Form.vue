@@ -6,6 +6,8 @@ import StepFour from '@/components/form/StepFour.vue'
 import StepFive from '@/components/form/StepFive.vue'
 import StepSix from '@/components/form/StepSix.vue'
 import StepSeven from '@/components/form/StepSeven.vue'
+import StepEight from '@/components/form/StepEight.vue'
+import StepNine from '@/components/form/StepNine.vue'
 import CallUsScreen from '@/components/form/CallUsScreen.vue'
 import { useFormStore } from '@/store/form'
 import { ArrowLeftCircleIcon } from '@heroicons/vue/24/solid'
@@ -34,14 +36,28 @@ const handleSteps = (from: string) => {
       form.withStepSix = false
       step.value = 7
     }
+  } else if (from === 'foward' && step.value === 9) {
+    submitForm()
+    step.value++
   } else if (from === 'foward') step.value++
-  console.log(step.value, form.withStepSix)
+}
+
+async function submitForm() {
+  try {
+    const { data } = await $fetch('/api/saveForm', {
+      method: 'POST',
+      body: form.form
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 </script>
 
 <template>
   <div class="h-full p-4">
     <button
+      v-if="step !== 1"
       class="text-start w-20 h-20 text-orange-600 cursor-pointer absolute"
       @click="handleSteps('back')"
     >
@@ -55,11 +71,26 @@ const handleSteps = (from: string) => {
         @callus="handleSteps('callus')"
       />
       <CallUsScreen v-else-if="step === 2 && callus" />
-      <StepThree v-if="step === 3" @changeStep="handleSteps('foward')" />
-      <StepFour v-if="step === 4" @changeStep="handleSteps('foward')" />
-      <StepFive v-if="step === 5" @changeStep="handleSteps('foward')" />
-      <StepSix v-if="step === 6" @changeStep="handleSteps('foward')" />
-      <StepSeven v-if="step === 7" @changeStep="handleSteps('foward')" />
+      <StepThree v-else-if="step === 3" @changeStep="handleSteps('foward')" />
+      <StepFour v-else-if="step === 4" @changeStep="handleSteps('foward')" />
+      <StepFive v-else-if="step === 5" @changeStep="handleSteps('foward')" />
+      <StepSix v-else-if="step === 6" @changeStep="handleSteps('foward')" />
+      <StepSeven v-else-if="step === 7" @changeStep="handleSteps('foward')" />
+      <StepEight v-else-if="step === 8" @changeStep="handleSteps('foward')" />
+      <StepNine v-else-if="step === 9" @changeStep="handleSteps('foward')" />
+      <div v-else-if="step === 10">
+        <span>{{ form.form }}</span>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+        <div>Raza: {{ form.form.breed }}</div>
+      </div>
     </div>
   </div>
 </template>

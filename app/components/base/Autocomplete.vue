@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 
 type AutocompleteEmits = {
   (event: 'select', value: string): void
@@ -73,15 +74,21 @@ onUnmounted(() => {
 <template>
   <div class="flex justify-center items-center">
     <div class="relative space-y-3 w-full" ref="autocompleteRef">
-      <input
-        data-testid="autocomplete-input"
-        type="text"
-        id="search"
-        v-model="searchTerm"
-        :placeholder="placeholder"
-        class="py-3 px-6 mb-1 w-full border border-gray-300 hover:border-gray-400 rounded-3xl focus:outline-2 focus:outline-orange-400"
-        @focus="isListVisible = true"
-      />
+      <div
+        class="flex justify-between px-6 mb-1 w-full border border-gray-300 hover:border-gray-400 rounded-3xl"
+        :class="isListVisible ? 'outline-2 outline-orange-400' : ''"
+      >
+        <input
+          data-testid="autocomplete-input"
+          type="text"
+          id="search"
+          v-model="searchTerm"
+          :placeholder="placeholder"
+          class="w-full h-full py-3 focus:outline-0"
+          @focus="isListVisible = true"
+        />
+        <ChevronDownIcon class="h-6 w-6 mt-2.5 text-gray-500" />
+      </div>
 
       <ul
         v-if="

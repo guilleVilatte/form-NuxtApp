@@ -4,7 +4,7 @@ import breeds from '@/data/breeds.json'
 
 export const useFormStore = defineStore('form', () => {
   const form = reactive({
-    breed: 'Mestizo',
+    breed: '',
     name: '',
     nameTwo: '',
     sex: '',
@@ -13,9 +13,14 @@ export const useFormStore = defineStore('form', () => {
     month: '',
     shape: '2',
     weight: '',
-    activity: '2',
+    activity: '',
     pathology: '',
-    whichPathology: ''
+    whichPathology: '',
+    foodCritic: '2',
+    human: {
+      email: '',
+      number: ''
+    }
   })
   const withStepSix = ref<boolean | null>(null)
 
