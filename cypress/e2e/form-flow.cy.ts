@@ -1,10 +1,10 @@
-describe('Formulario multi-step - happy path', () => {
+describe('multi-step form', () => {
   it('permite completar el formulario completo', () => {
     cy.visit('')
     cy.window().its('__NUXT__').should('exist')
     // Step 1
     cy.contains('Pon comida de verdad en el bol de tu perro')
-    cy.wait(3000)
+    cy.wait(5000)
     cy.get('[data-testid="autocomplete-input"]').focus().type('lab')
     cy.contains('Labrador').should('be.visible').click()
 

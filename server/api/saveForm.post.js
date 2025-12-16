@@ -5,8 +5,8 @@ export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event) // obtenemos los datos del formulario
     const filePath = body.activity
-      ? path.join(process.cwd(), 'data', 'formDataGroupA.json')
-      : path.join(process.cwd(), 'data', 'formDataGroupB.json')
+      ? path.join(process.cwd(), 'data', 'GroupA.json')
+      : path.join(process.cwd(), 'data', 'GroupB.json')
 
     // Leemos datos existentes
     let existingData = []
