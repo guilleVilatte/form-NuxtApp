@@ -12,7 +12,7 @@ form.form.activity = '2'
 </script>
 
 <template>
-  <div class="flex justify-center items-center gap-8 flex-col sm:w-xl">
+  <div data-testid="extra-question" class="flex justify-center items-center gap-8 flex-col sm:w-xl">
     <h1 class="font-normal text-3xl text-gray-700">
       ¿Cuál es el nivel de actividad de {{ form.form.name }}?
     </h1>
