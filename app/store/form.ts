@@ -4,7 +4,7 @@ import breeds from '@/data/breeds.json'
 
 export const useFormStore = defineStore('form', () => {
   const form = reactive({
-    breed: '',
+    breed: 'Mestizo',
     name: '',
     nameTwo: '',
     sex: '',

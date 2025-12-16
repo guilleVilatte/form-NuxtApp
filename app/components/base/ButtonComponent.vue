@@ -17,6 +17,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <button
+    data-testid="button"
     class="leading-5 h-full flex font-inter enabled:cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
     :class="
       type === 'button'

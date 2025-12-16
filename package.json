@@ -8,7 +8,10 @@
     "lint": "eslint app",
     "lint:fix": "eslint app --fix",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "cy:open": "cypress open --browser chrome",
+    "cy:run": "cypress run",
+    "test:e2e": "start-server-and-test dev http://localhost:3000 cy:run"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
@@ -24,12 +27,14 @@
     "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.49.0",
     "autoprefixer": "^10.4.22",
+    "cypress": "^15.7.1",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-vue": "^10.6.2",
     "prettier": "^3.7.4",
+    "start-server-and-test": "^2.1.3",
     "vue-eslint-parser": "^10.2.0"
   }
 }

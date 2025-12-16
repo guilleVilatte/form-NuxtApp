@@ -74,6 +74,7 @@ onUnmounted(() => {
   <div class="flex justify-center items-center">
     <div class="relative space-y-3 w-full" ref="autocompleteRef">
       <input
+        data-testid="autocomplete-input"
         type="text"
         id="search"
         v-model="searchTerm"
@@ -88,6 +89,7 @@ onUnmounted(() => {
           searchElements.length &&
           !searchElements.find((element) => element.name.toLowerCase() === searchTerm.toLowerCase())
         "
+        data-testid="autocomplete-list"
         class="w-full max-h-[200px] rounded bg-white border-x border-gray-300 border-b border-gray-300 px-4 py-2 space-y-1 absolute z-10 overflow-y-scroll"
       >
         <li

@@ -20,7 +20,7 @@ const form = useFormStore()
     <p>Comida natural para perros, completa y equilibrada. Elaborada por nutricionistas</p>
     <Autocomplete
       :list="breeds"
-      placeholder="Qué raza es tu peludo?"
+      placeholder="¿Qué raza es tu peludo?"
       :selected="form.form.breed"
       @select="form.handleSelectBreed"
     />
