@@ -83,7 +83,7 @@ async function submitForm() {
         class="h-[500px] w-[400px] gap-1 flex flex-col justify-start items-start p-8 border border-orange-500 rounded-lg"
       >
         <span class="text-xl text-orange-500 font-medium">{{
-          form.form.activity ? 'formDataGroupA.json' : 'formDataGroupB.json'
+          form.form.activity ? 'GroupA.json' : 'GroupB.json'
         }}</span>
         <span class="text-xl text-orange-500 font-medium">{{ form.form.human.email }}</span>
         <span class="text-xl text-orange-500 font-medium mb-3">{{ form.form.human.number }}</span>

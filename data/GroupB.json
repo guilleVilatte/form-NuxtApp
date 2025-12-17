@@ -17,5 +17,24 @@
       "email": "toby@gmail.com",
       "number": "666 666 666"
     }
+  },
+  {
+    "breed": "Mestizo",
+    "name": "Guillermo Vilatte",
+    "nameTwo": "",
+    "sex": "Macho",
+    "sterilized": "No",
+    "year": "2025",
+    "month": "Febrero",
+    "shape": "2",
+    "weight": "32",
+    "activity": "",
+    "pathology": "No",
+    "whichPathology": "",
+    "foodCritic": "1",
+    "human": {
+      "email": "guillevilatte@gmail.com",
+      "number": "922813490"
+    }
   }
 ]

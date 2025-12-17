@@ -44,8 +44,8 @@ describe('multi-step form', () => {
       } else {
         // La pregunta no aparece
         cy.log('Pregunta extra no mostrada, continuar flujo normal')
-  }
-})
+      }
+    })
 
     // Step 7
     cy.contains('¿Tiene Toby alguna patología?')

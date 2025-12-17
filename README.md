@@ -1,75 +1,41 @@
-# Nuxt Content Starter
+## Technical Decisions
 
-Look at the [Nuxt Content documentation](https://content.nuxt.com) to learn more.
+- Nuxt 3 + TypeScript for scalability and strong typing
+- Pinia as the global state management solution
+- Tailwind CSS for utility-first styling
+- ESLint to enforce consistent code quality, formatting, and best practices across the codebase
+- Heroicons for a consistent, lightweight icon system integrated with Vue components
+- Focused E2E tests, prioritizing real user flows over excessive test coverage
 
-## Setup
 
-Make sure to install dependencies:
+## Available Scripts
 
-```bash
-# npm
-npm install
+npm run dev        # Run the app in development mode
+npm run build      # Build for production
+npm run lint       # Run ESLint
+npm run lint:fix   # Run ESLint with auto-fix
+npm run cy:open    # Open Cypress UI
+npm run test:e2e   # Run Cypress in terminal
 
-# pnpm
-pnpm install
 
-# yarn
-yarn install
+## Data persistence
 
-# bun
-bun install
-```
+When the user completes the form:
 
-## Development Server
+- All collected answers are stored in a centralized Pinia store
+- Based on the conditional logic described above, the final user data is persisted in the corresponding JSON file:
+  - `GrupoA.json` if Question 6 was part of the flow
+  - `GrupoB.json` otherwise
 
-Start the development server on `http://localhost:3000`:
+This ensures that the user’s data remains consistent and correctly categorized after the form submission.
 
-```bash
-# npm
-npm run dev
 
-# pnpm
-pnpm dev
+## Future Improvements
 
-# yarn
-yarn dev
+Given more time, the following areas could be further improved:
 
-# bun
-bun run dev
-```
+- **Custom components complexity**  
+  Refactor and generalize complex custom components (such as the autocomplete and form controls) to improve reusability, testability, and separation of concerns.
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+- **Architecture and scalability**  
+  Improve the overall application architecture by introducing clearer domain boundaries, more granular stores, and stronger abstraction layers to better support future feature growth.
