@@ -5,10 +5,10 @@ describe('multi-step form', () => {
     // Step 1
     cy.contains('Pon comida de verdad en el bol de tu perro')
     cy.wait(5000)
-    cy.get('[data-testid="autocomplete-input"]').focus().type('lab')
+    cy.get('[data-testid="autocomplete-input"]').click()
     cy.contains('Labrador').should('be.visible').click()
-
     cy.get('[data-testid="button"]').should('not.be.disabled').click()
+
     // Step 2
     cy.contains('¿Cómo se llama tus perrete?')
     cy.get('input').type('Toby')
@@ -23,8 +23,10 @@ describe('multi-step form', () => {
 
     // Step 4
     cy.contains('¿Cuándo nació Toby?')
-    cy.get('[data-testid="autocomplete-input"]').first().focus().type('2023')
-    cy.get('[data-testid="autocomplete-input"]').eq(1).focus().type('Marzo')
+    cy.get('[data-testid="autocomplete-input"]').first().click()
+    cy.contains('2023').should('be.visible').click()
+    cy.get('[data-testid="autocomplete-input"]').eq(1).click()
+    cy.contains('Marzo').should('be.visible').click()
     cy.contains('Continuar').click()
 
     // Step 5

@@ -25,12 +25,14 @@ const icon = h('img', { class: 'w-4 h-4 mx-1', src: emojiDoc })
     <div class="w-3/4 flex flex-col gap-2">
       <Autocomplete
         :list="years"
+        :select="true"
         placeholder="Año"
         :selected="form.form.year"
         @select="form.handleSelectYear"
       />
       <Autocomplete
         :list="months"
+        :select="true"
         placeholder="Mes"
         :selected="form.form.month"
         @select="form.handleSelectMonth"

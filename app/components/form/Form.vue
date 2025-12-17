@@ -58,7 +58,7 @@ async function submitForm() {
   <div class="h-full p-4">
     <button
       v-if="step !== 1"
-      class="text-start w-20 h-20 text-orange-600 cursor-pointer absolute"
+      class="text-start w-20 h-20 text-orange-600 cursor-pointer absolute hover:-translate-y-1 hover:scale-105 transition duration-150 ease-in-out"
       @click="handleSteps('back')"
     >
       <ArrowLeftCircleIcon />

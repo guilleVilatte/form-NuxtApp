@@ -14,6 +14,7 @@ interface Props {
   list: ListElement[]
   selected?: string
   placeholder?: string
+  select?: boolean
 }
 
 const emit = defineEmits<AutocompleteEmits>()
@@ -29,23 +30,25 @@ const isListVisible = ref<boolean>(false)
 
 watch(searchTerm, (newVal) => {
   emit('select', newVal)
+  if (
+    searchElements.value.find(
+      (element) => element.name.toLowerCase() === searchTerm.value.toLowerCase()
+    )
+  )
+    isListVisible.value = false
 })
 
 const searchElements = computed((): ListElement[] => {
-  if (searchTerm.value === '') {
+  if (searchTerm.value === '' || props.select) {
     return elements.value
   }
 
   const searchLower = searchTerm.value.toLowerCase()
   const filteredElements: ListElement[] = []
-  let matches = 0
 
   elements.value.forEach((element) => {
     if (element.name.toLowerCase().includes(searchLower)) {
-      if (matches < 10) {
-        filteredElements.push(element)
-        matches++
-      }
+      filteredElements.push(element)
     }
   })
 
@@ -85,17 +88,15 @@ onUnmounted(() => {
           v-model="searchTerm"
           :placeholder="placeholder"
           class="w-full h-full py-3 focus:outline-0"
+          :class="select ? 'cursor-pointer' : ''"
           @focus="isListVisible = true"
+          :readonly="select"
         />
         <ChevronDownIcon class="h-6 w-6 mt-2.5 text-gray-500" />
       </div>
 
       <ul
-        v-if="
-          isListVisible &&
-          searchElements.length &&
-          !searchElements.find((element) => element.name.toLowerCase() === searchTerm.toLowerCase())
-        "
+        v-if="isListVisible && searchElements.length"
         data-testid="autocomplete-list"
         class="w-full max-h-[200px] rounded bg-white border-x border-gray-300 border-b border-gray-300 px-4 py-2 space-y-1 absolute z-10 overflow-y-scroll"
       >
