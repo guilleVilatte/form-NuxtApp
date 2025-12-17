@@ -1,0 +1,40 @@
+[
+  {
+    "breed": "Pastor aleman",
+    "name": "Lol",
+    "nameTwo": "",
+    "sex": "Macho",
+    "sterilized": "Si",
+    "year": "2021",
+    "month": "Mayo",
+    "shape": "3",
+    "weight": "33",
+    "activity": "",
+    "pathology": "Si",
+    "whichPathology": "Digestiones sensibles",
+    "foodCritic": "2",
+    "human": {
+      "email": "dasd@asdsA",
+      "number": "1234543577"
+    }
+  },
+  {
+    "breed": "Labrador",
+    "name": "Toby",
+    "nameTwo": "",
+    "sex": "Macho",
+    "sterilized": "Si",
+    "year": "2023",
+    "month": "Marzo",
+    "shape": "2",
+    "weight": "22",
+    "activity": "",
+    "pathology": "Si",
+    "whichPathology": "Alergias e intolerancias alimenticias",
+    "foodCritic": "2",
+    "human": {
+      "email": "toby@gmail.com",
+      "number": "666 666 666"
+    }
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "breed": "Mestizo",
+    "name": "lola",
+    "nameTwo": "",
+    "sex": "Macho",
+    "sterilized": "Si",
+    "year": "2025",
+    "month": "Abril",
+    "shape": "3",
+    "weight": "33",
+    "activity": "2",
+    "pathology": "Si",
+    "whichPathology": "Problemas de piel",
+    "foodCritic": "1",
+    "human": {
+      "email": "dasd@asdsA",
+      "number": "1234543577"
+    }
+  },
+  {
+    "breed": "Mestizo",
+    "name": "lola",
+    "nameTwo": "",
+    "sex": "Macho",
+    "sterilized": "Si",
+    "year": "2025",
+    "month": "Abril",
+    "shape": "2",
+    "weight": "33",
+    "activity": "2",
+    "pathology": "Si",
+    "whichPathology": "Problemas de piel",
+    "foodCritic": "1",
+    "human": {
+      "email": "dasd@asdsA",
+      "number": "1234543577"
+    }
+  }
+]

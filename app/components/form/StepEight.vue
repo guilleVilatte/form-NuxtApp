@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
+import Slider from '@/components/base/Slider.vue'
 import ButtonComponent from '@/components/base/ButtonComponent.vue'
 
 type changeStepEmits = {
@@ -17,7 +18,7 @@ const form = useFormStore()
     </div>
     <h1 class="font-normal text-3xl text-gray-700">¿Qué crítico gastronómico es tu perro?</h1>
     <p>Elige la opción que mejor describa a {{ form.form.name }}</p>
-    <div class="border border-blue-200 rounded-lg p-4 text-blue-600 font-medium">
+    <div class="border border-orange-300 rounded-lg p-4 text-orange-500 font-medium">
       <p v-if="form.form.foodCritic === '1'">
         El selectivo: es de paladar exigente, suele costarle terminar su ración y se cansa de la
         comida (verás qué cambio cuando pruebe Dogfy)
@@ -29,7 +30,7 @@ const form = useFormStore()
         El glotón: devora todo tipo de comida como si no fuera a probar bocado nunca más
       </p>
     </div>
-    <input class="w-1/2" v-model="form.form.foodCritic" type="range" max="3" min="1" />
+    <Slider :value="form.form.foodCritic" @value="form.handleFoodCritic" />
     <div class="h-[50px]">
       <ButtonComponent
         text="Continuar"

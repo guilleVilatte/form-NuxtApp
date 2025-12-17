@@ -31,7 +31,7 @@ describe('multi-step form', () => {
 
     // Step 5
     cy.contains('¿Qué silueta representa mejor a Toby?')
-    cy.get('input.w-1\\/2').click()
+    cy.get('[data-testid="slider"]').click()
     cy.get('#weight').click()
     cy.get('#weight').type('22')
     cy.contains('Continuar').click()
@@ -41,7 +41,7 @@ describe('multi-step form', () => {
         // La pregunta aparece
         // Step 6
         cy.contains('¿Cuál es el nivel de actividad de Toby?')
-        cy.get('input.w-1\\/2').click()
+        cy.get('[data-testid="slider"]').click()
         cy.contains('Continuar').click()
       } else {
         // La pregunta no aparece

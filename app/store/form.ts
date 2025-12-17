@@ -54,12 +54,27 @@ export const useFormStore = defineStore('form', () => {
     form.whichPathology = sel
   }
 
+  const handleShape = (sel: string) => {
+    form.shape = sel
+  }
+
+  const handleActivity = (sel: string) => {
+    form.activity = sel
+  }
+
+  const handleFoodCritic = (sel: string) => {
+    form.foodCritic = sel
+  }
+
   return {
     form,
     handleSex,
+    handleShape,
     withStepSix,
+    handleActivity,
     handlePathology,
     handleSelectYear,
+    handleFoodCritic,
     handleSelectBreed,
     handleSelectMonth,
     handleSelectPathology,

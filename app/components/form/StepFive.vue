@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
+import Slider from '@/components/base/Slider.vue'
 import ButtonComponent from '@/components/base/ButtonComponent.vue'
 
 type changeStepEmits = {
@@ -16,7 +17,7 @@ const form = useFormStore()
       ¿Qué silueta representa mejor a {{ form.form.name }}?
     </h1>
     <p>Selecciona la figura que más se asemeja en cuanto a su peso y forma</p>
-    <div class="border border-blue-200 rounded-lg p-4 text-blue-600 font-medium">
+    <div class="border border-orange-300 rounded-lg p-4 text-orange-500 font-medium">
       <p v-if="form.form.shape === '1'">
         Un poco flaquito: Cintura estrecha y se le ven claramente las costillas.
       </p>
@@ -27,7 +28,7 @@ const form = useFormStore()
         Un poco rellenito: La cintura no es visible y sus costillas son difíciles de palpar.
       </p>
     </div>
-    <input class="w-1/2" v-model="form.form.shape" type="range" max="3" min="1" />
+    <Slider :value="form.form.shape" @value="form.handleShape" />
     <div class="flex flex-col gap-4 items-center w-full max-w-lg">
       <p>El peso de {{ form.form.name }} es más o menos de</p>
       <input

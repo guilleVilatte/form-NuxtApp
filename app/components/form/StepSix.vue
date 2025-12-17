@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
+import Slider from '@/components/base/Slider.vue'
 import ButtonComponent from '@/components/base/ButtonComponent.vue'
 
 type changeStepEmits = {
@@ -17,7 +18,7 @@ form.form.activity = '2'
       ¿Cuál es el nivel de actividad de {{ form.form.name }}?
     </h1>
     <p>Elige el nivel de actividad que mejor le describa.</p>
-    <div class="border border-blue-200 rounded-lg p-4 text-blue-600 font-medium">
+    <div class="border border-orange-300 rounded-lg p-4 text-orange-500 font-medium">
       <p v-if="form.form.activity === '1'">
         Perro alfombra: paseos diarios de menos de 1h. Lo que más le gusta es echarse una buena
         siesta y estar bien tranquilito.
@@ -30,7 +31,7 @@ form.form.activity = '2'
         Perro terremoto: paseos diarios de más de 2h. ¡No veas qué torbellino de energía!
       </p>
     </div>
-    <input class="w-1/2" v-model="form.form.activity" type="range" max="3" min="1" />
+    <Slider :value="form.form.activity" @value="form.handleActivity" />
     <div class="h-[50px]">
       <ButtonComponent
         text="Continuar"
