@@ -18,7 +18,6 @@ const errorNumber = ref(false)
 const validate = (from: string) => {
   if (from === 'email') errorEmail.value = !emailRe.test(form.form.human.email)
   else errorNumber.value = !numberRe.test(form.form.human.number)
-  console.log(errorEmail.value, errorNumber.value)
 }
 </script>
 
