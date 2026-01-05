@@ -22,6 +22,7 @@ export const useFormStore = defineStore('form', () => {
       number: ''
     }
   })
+  const lastStep = ref(0)
   const withStepSix = ref<boolean | null>(null)
 
   const handleSelectBreed = (value: string) => {
@@ -68,6 +69,7 @@ export const useFormStore = defineStore('form', () => {
 
   return {
     form,
+    lastStep,
     handleSex,
     handleShape,
     withStepSix,

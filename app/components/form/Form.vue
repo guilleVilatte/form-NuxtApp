@@ -17,6 +17,7 @@ const callus = ref(false)
 const form = useFormStore()
 
 const handleSteps = (from: string) => {
+  form.lastStep = step.value
   if (from === 'callus') {
     step.value = 2
     callus.value = true
@@ -51,6 +52,10 @@ async function submitForm() {
   } catch (err) {
     console.log(err)
   }
+}
+
+const handleRoutes = (elem: number) => {
+  step.value = elem
 }
 </script>
 
@@ -97,6 +102,16 @@ async function submitForm() {
         <div>Peso(KG): {{ form.form.weight }}</div>
         <div>Patología: {{ form.form.whichPathology }}</div>
         <div>Crítico: {{ form.form.foodCritic }}</div>
+      </div>
+      <div class="flex gap-6 bg-gray-50 rounded-full absolute top-6 px-10 py-6">
+        <button
+          v-for="element of 10"
+          :key="element"
+          class="h-4 w-4 bg-gray-300 rounded-full cursor-pointer enabled:hover:-translate-y-1 enabled:hover:scale-110 transition duration-75 ease-in-out"
+          :class="element === step ? 'bg-orange-500' : ''"
+          :disabled="form.lastStep < element"
+          @click="handleRoutes(element)"
+        ></button>
       </div>
     </div>
   </div>
