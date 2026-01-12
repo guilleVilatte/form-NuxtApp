@@ -4,7 +4,6 @@ describe('multi-step form', () => {
     cy.window().its('__NUXT__').should('exist')
     // Step 1
     cy.contains('Pon comida de verdad en el bol de tu perro')
-    cy.wait(5000)
     cy.get('[data-testid="autocomplete-input"]').click()
     cy.contains('Labrador').should('be.visible').click()
     cy.get('[data-testid="button"]').should('not.be.disabled').click()
