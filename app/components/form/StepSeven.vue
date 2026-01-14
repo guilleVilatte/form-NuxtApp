@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
 import SegmentControlButtons from '@/components/base/SegmentControlButtons.vue'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 import Autocomplete from '@/components/base/Autocomplete.vue'
 import HelpMessages from '@/components/base/HelpMessages.vue'
 import emojiDoc from '@/resources/images/emojiDoc.png'
@@ -39,16 +38,9 @@ const icon = h('img', { class: 'w-4 h-4 mx-1', src: emojiDoc })
         @select="form.handleSelectPathology"
       />
     </div>
-    <div class="h-[50px]">
-      <ButtonComponent
-        text="Continuar"
-        :disabled="!(form.form.pathology === 'No' || form.form.whichPathology)"
-        @click="emit('changeStep')"
-      />
-    </div>
   </div>
   <HelpMessages
-    class="mt-10"
+    class="mt-10 w-2/3"
     :bool="true"
     text-one="Cada perro es un mundo"
     :icon="icon"

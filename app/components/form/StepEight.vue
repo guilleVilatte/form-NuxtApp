@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
 import Slider from '@/components/base/Slider.vue'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 
 type changeStepEmits = {
   (event: 'changeStep'): void
@@ -31,12 +30,5 @@ const form = useFormStore()
       </p>
     </div>
     <Slider :value="form.form.foodCritic" @value="form.handleFoodCritic" />
-    <div class="h-[50px]">
-      <ButtonComponent
-        text="Continuar"
-        :disabled="!form.form.foodCritic"
-        @click="emit('changeStep')"
-      />
-    </div>
   </div>
 </template>

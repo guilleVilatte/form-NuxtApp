@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
 import Slider from '@/components/base/Slider.vue'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 
 type changeStepEmits = {
   (event: 'changeStep'): void
@@ -38,13 +37,6 @@ const form = useFormStore()
         placeholder="KG"
         class="bg-gray-100 py-3 px-6 mb-1 w-1/4 border border-gray-300 rounded-3xl focus:outline-2 focus:outline-orange-400"
         @input="form.form.weight = form.form.weight.replace(/\D/g, '')"
-      />
-    </div>
-    <div class="h-[50px]">
-      <ButtonComponent
-        text="Continuar"
-        :disabled="!form.form.shape || !form.form.weight"
-        @click="emit('changeStep')"
       />
     </div>
   </div>

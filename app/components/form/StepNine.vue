@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 
 type changeStepEmits = {
   (event: 'changeStep'): void
@@ -50,13 +49,6 @@ const validate = (from: string) => {
         @input="validate('number')"
       />
       <p v-if="errorNumber" class="text-red-500 text-sm">El formato de teléfono no es correcto.</p>
-    </div>
-    <div class="h-[50px]">
-      <ButtonComponent
-        :text="'Ver el menú de ' + form.form.name"
-        :disabled="!form.form.human.email || errorEmail || !form.form.human.number || errorNumber"
-        @click="emit('changeStep')"
-      />
     </div>
   </div>
 </template>

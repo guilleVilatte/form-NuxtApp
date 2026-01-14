@@ -5,7 +5,7 @@ interface Props {
   text: string
   type?: string
   icon?: Component
-  disabled: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {

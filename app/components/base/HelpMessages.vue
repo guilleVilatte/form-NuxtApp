@@ -15,7 +15,10 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="text-sm text-gray-600 rounded-lg bg-sky-100 flex p-4" :class="bool ? 'flex-col' : ''">
+  <div
+    class="text-sm text-gray-600 rounded-lg bg-sky-100 flex p-4 absolute bottom-12"
+    :class="bool ? 'flex-col' : ''"
+  >
     <span class="flex" :class="bool ? 'font-medium' : ''"
       >{{ textOne }} <component :is="icon"
     /></span>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
-
 const handleMsg = () =>
   window.open(
     'https://api.whatsapp.com/send/?phone=34604101010&text&type=phone_number&app_absent=0',
@@ -23,8 +21,5 @@ const handleMsg = () =>
     <button class="flex justify-center items-center cursor-pointer my-4" @click="handleMsg">
       <img class="h-full w-full" src="@/resources/images/whatsapp.svg" alt="" />
     </button>
-    <div class="h-[50px] mx-0">
-      <ButtonComponent text="Escribir" :disabled="false" @click="handleMsg" />
-    </div>
   </div>
 </template>

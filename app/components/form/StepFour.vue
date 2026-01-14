@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
 import Autocomplete from '@/components/base/Autocomplete.vue'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 import HelpMessages from '@/components/base/HelpMessages.vue'
 import emojiDoc from '@/resources/images/emojiDoc.png'
 import months from '@/data/months.json'
@@ -36,13 +35,6 @@ const icon = h('img', { class: 'w-4 h-4 mx-1', src: emojiDoc })
         placeholder="Mes"
         :selected="form.form.month"
         @select="form.handleSelectMonth"
-      />
-    </div>
-    <div class="h-[50px]">
-      <ButtonComponent
-        text="Continuar"
-        :disabled="!form.form.year || !form.form.month"
-        @click="emit('changeStep')"
       />
     </div>
   </div>

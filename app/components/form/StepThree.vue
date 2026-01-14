@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFormStore } from '@/store/form'
 import SegmentControlButtons from '@/components/base/SegmentControlButtons.vue'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 import HelpMessages from '@/components/base/HelpMessages.vue'
 import emojiDoc from '@/resources/images/emojiDoc.png'
 
@@ -33,13 +32,6 @@ const icon = h('img', { class: 'w-4 h-4 mx-1', src: emojiDoc })
         :list="['Si', 'No']"
         :selected-prop="form.form.sterilized"
         @select="form.handleSterilizedOptions"
-      />
-    </div>
-    <div class="h-[50px] mt-6">
-      <ButtonComponent
-        text="Continuar"
-        :disabled="!form.form.sterilized || !form.form.sex"
-        @click="emit('changeStep')"
       />
     </div>
   </div>

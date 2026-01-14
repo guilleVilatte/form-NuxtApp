@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import Autocomplete from '@/components/base/Autocomplete.vue'
-import ButtonComponent from '@/components/base/ButtonComponent.vue'
 import { useFormStore } from '@/store/form'
-import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 import breeds from '@/data/breeds.json'
 
 type changeStepEmits = {
@@ -26,14 +24,5 @@ const form = useFormStore()
         @select="form.handleSelectBreed"
       />
     </ClientOnly>
-    <div class="h-[50px]">
-      <ButtonComponent
-        class="w-full"
-        text="Crea su menú"
-        :icon="ArrowRightIcon"
-        :disabled="!form.form.breed"
-        @click="emit('changeStep')"
-      />
-    </div>
   </div>
 </template>

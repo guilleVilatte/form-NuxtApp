@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ButtonComponent from '@/components/base/ButtonComponent.vue'
 import StepOne from '@/components/form/StepOne.vue'
 import StepTwo from '@/components/form/StepTwo.vue'
 import StepThree from '@/components/form/StepThree.vue'
@@ -8,24 +9,20 @@ import StepSix from '@/components/form/StepSix.vue'
 import StepSeven from '@/components/form/StepSeven.vue'
 import StepEight from '@/components/form/StepEight.vue'
 import StepNine from '@/components/form/StepNine.vue'
-import CallUsScreen from '@/components/form/CallUsScreen.vue'
 import { useFormStore } from '@/store/form'
-import { ArrowLeftCircleIcon } from '@heroicons/vue/24/solid'
+import { ArrowLeftCircleIcon, ArrowRightIcon } from '@heroicons/vue/24/solid'
+import InfoComponent from './InfoComponent.vue'
 
 const step = ref(1)
-const callus = ref(false)
 const form = useFormStore()
 
 const handleSteps = (from: string) => {
   form.lastStep = step.value
-  if (from === 'callus') {
-    step.value = 2
-    callus.value = true
-  } else if (from === 'back' && step.value === 7) {
+  form.callus = false
+  if (from === 'back' && step.value === 7) {
     if (form.withStepSix) step.value--
     else step.value = 5
-  } else if (from === 'back' && step.value !== 1 && !callus.value) step.value--
-  else if (from === 'back' && step.value !== 1 && callus.value) callus.value = false
+  } else if (from === 'back' && step.value !== 1) step.value--
   else if (from === 'foward' && step.value === 5) {
     if (
       (Math.floor(Math.random() * 10) % 2 === 0 && form.withStepSix === null) ||
@@ -57,6 +54,12 @@ async function submitForm() {
 const handleRoutes = (elem: number) => {
   step.value = elem
 }
+
+const handleMsg = () =>
+  window.open(
+    'https://api.whatsapp.com/send/?phone=34604101010&text&type=phone_number&app_absent=0',
+    '_blank'
+  )
 </script>
 
 <template>
@@ -70,12 +73,7 @@ const handleRoutes = (elem: number) => {
     </button>
     <div class="flex flex-col justify-center items-center h-full">
       <StepOne v-if="step === 1" @changeStep="handleSteps('foward')" />
-      <StepTwo
-        v-else-if="step === 2 && !callus"
-        @changeStep="handleSteps('foward')"
-        @callus="handleSteps('callus')"
-      />
-      <CallUsScreen v-else-if="step === 2 && callus" />
+      <StepTwo v-else-if="step === 2" @changeStep="handleSteps('foward')" />
       <StepThree v-else-if="step === 3" @changeStep="handleSteps('foward')" />
       <StepFour v-else-if="step === 4" @changeStep="handleSteps('foward')" />
       <StepFive v-else-if="step === 5" @changeStep="handleSteps('foward')" />
@@ -83,26 +81,7 @@ const handleRoutes = (elem: number) => {
       <StepSeven v-else-if="step === 7" @changeStep="handleSteps('foward')" />
       <StepEight v-else-if="step === 8" @changeStep="handleSteps('foward')" />
       <StepNine v-else-if="step === 9" @changeStep="handleSteps('foward')" />
-      <div
-        v-else-if="step === 10"
-        class="h-[500px] w-[400px] gap-1 flex flex-col justify-start items-start p-8 border border-orange-500 rounded-lg"
-      >
-        <span class="text-xl text-orange-500 font-medium">{{
-          form.form.activity ? 'GroupA.json' : 'GroupB.json'
-        }}</span>
-        <span class="text-xl text-orange-500 font-medium">{{ form.form.human.email }}</span>
-        <span class="text-xl text-orange-500 font-medium mb-3">{{ form.form.human.number }}</span>
-        <div>Raza: {{ form.form.breed }}</div>
-        <div>Nombre: {{ form.form.name }}</div>
-        <div>Sexo: {{ form.form.sex }}</div>
-        <div>Esterilizado: {{ form.form.sterilized }}</div>
-        <div>Año: {{ form.form.year }}</div>
-        <div>Mes: {{ form.form.month }}</div>
-        <div>Forma(1-3): {{ form.form.shape }}</div>
-        <div>Peso(KG): {{ form.form.weight }}</div>
-        <div>Patología: {{ form.form.whichPathology }}</div>
-        <div>Crítico: {{ form.form.foodCritic }}</div>
-      </div>
+      <InfoComponent v-else-if="step === 10" />
       <div class="flex gap-6 bg-gray-50 rounded-full absolute top-6 px-10 py-6">
         <button
           v-for="element of 10"
@@ -112,6 +91,24 @@ const handleRoutes = (elem: number) => {
           :disabled="form.lastStep < element"
           @click="handleRoutes(element)"
         ></button>
+      </div>
+      <div class="h-[50px] mt-6">
+        <ButtonComponent
+          v-if="step !== 10"
+          class="w-full"
+          :text="
+            step === 1
+              ? 'Crea su menú'
+              : form.callus
+                ? 'Escribir'
+                : step === 9
+                  ? `Ver el menú de ${form.form.name}`
+                  : 'Continuar'
+          "
+          :icon="step === 1 ? ArrowRightIcon : undefined"
+          :disabled="false"
+          @click="form.callus ? handleMsg : handleSteps('foward')"
+        />
       </div>
     </div>
   </div>
